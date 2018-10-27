@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using MagicApiLib;
 using Microsoft.AspNetCore.Mvc;
+using MtgApiManager.Lib.Core;
+using MtgApiManager.Lib.Model;
 
 namespace MagicApp.Controllers
 {
@@ -11,16 +13,30 @@ namespace MagicApp.Controllers
     [ApiController]
     public class CardController : ControllerBase
     {
+        Magic magicSender;
         public CardController()
         {
-            Magic magicSender = new Magic();
+            magicSender = new Magic();
         }
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Card>> Get()
         {
-            return new string[] {"",""};
+            string[] _output;
+            Exceptional<List<Card>> _aux;
+
+            for(int i = 0, len = 10;i<len;i++)
+            {
+
+                _aux.Value.Concat0
+            }
+            
+            for(int i = 0, len = _aux.Count(); i < len; i++)
+            {
+                _output.Append(_aux[i]);
+            }
+            return _output;
         }
 
         // GET api/values/5
