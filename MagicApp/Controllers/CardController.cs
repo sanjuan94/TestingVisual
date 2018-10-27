@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MagicApiLib;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MagicApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Magic")]
     [ApiController]
     public class CardController : ControllerBase
     {
+        public CardController()
+        {
+            Magic magicSender = new Magic();
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] {,};
+            return new string[] {"",""};
         }
 
         // GET api/values/5
