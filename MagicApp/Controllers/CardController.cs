@@ -21,22 +21,32 @@ namespace MagicApp.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Card>> Get()
+        public async Task<List<string>> Get()
         {
-            string[] _output;
-            Exceptional<List<Card>> _aux;
-
-            for(int i = 0, len = 10;i<len;i++)
+            List<string> _output = new List<string>();
+            Exceptional<List<Card>> _data = new Exceptional<List<Card>>();
+            try
             {
+                _data = await magicSender.GetCardsPage(1, 20);
+                /*
+                for (int i = 2, len = 10; i < len; i++)
+                {
+                    var _aux = await magicSender.GetCardsPage(i, 20);
 
-                _aux.Value.Concat0
+                    _data.Value.Concat(_aux.Value);
+                }*/
+
+                for (int i = 0, len = _data.Value.Count; i < len; i++)
+                {
+                    _output.Add(_data.Value[i].Name);
+                }
+                return _output;
             }
-            
-            for(int i = 0, len = _aux.Count(); i < len; i++)
+            catch(Exception ex)
             {
-                _output.Append(_aux[i]);
+               
+                throw ex;
             }
-            return _output;
         }
 
         // GET api/values/5

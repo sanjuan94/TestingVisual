@@ -45,7 +45,7 @@ namespace MagicApiLib
         {
             Exceptional<List<Card>> output;
             output = await service.Where(x => x.Page, _page)
-                            .Where(x => x.PageSize, 250)
+                            .Where(x => x.PageSize, _pageSize)
                             .AllAsync();
             return output;
         }
